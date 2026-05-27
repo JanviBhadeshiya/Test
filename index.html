@@ -135,13 +135,19 @@
 
       width:100%;
 
-      height:320px;
+      min-height:220px;
 
       display:flex;
+
       justify-content:center;
+
       align-items:center;
 
-      padding-top:10px;
+      gap:16px;
+
+      flex-wrap:wrap;
+
+      margin-top:10px;
     }
 
     button{
@@ -164,9 +170,7 @@
 
       box-shadow:0 6px 16px rgba(0,0,0,0.2);
 
-      min-width:130px;
-
-      max-width:75vw;
+      min-width:120px;
 
       white-space:nowrap;
 
@@ -179,15 +183,11 @@
 
       background:#28a745;
 
-      position:absolute;
-
-      left:18%;
-
-      top:50%;
-
-      transform:translateY(-50%) scale(1);
+      position:relative;
 
       z-index:2;
+
+      transform:scale(1);
     }
 
     /* Red Button */
@@ -196,15 +196,11 @@
 
       background:#ff3b3b;
 
-      position:absolute;
-
-      right:18%;
-
-      top:50%;
-
-      transform:translateY(-50%) scale(1);
+      position:relative;
 
       z-index:1;
+
+      transform:scale(1);
     }
 
     /* Message */
@@ -239,7 +235,7 @@
       }
     }
 
-    /* iPhone 15 / 16 Optimization */
+    /* iPhone 15 / iPhone 16 Optimization */
 
     @media (max-width:430px){
 
@@ -273,26 +269,18 @@
 
       .buttons{
 
-        height:280px;
+        gap:12px;
+
+        min-height:200px;
       }
 
       button{
 
-        font-size:0.95rem;
+        font-size:0.92rem;
 
-        padding:14px 18px;
+        padding:13px 18px;
 
-        min-width:115px;
-
-        max-width:70vw;
-      }
-
-      #yesBtn{
-        left:6%;
-      }
-
-      #noBtn{
-        right:6%;
+        min-width:105px;
       }
 
       .message{
@@ -311,9 +299,9 @@
 
       button{
 
-        font-size:0.9rem;
+        font-size:0.88rem;
 
-        padding:12px 16px;
+        padding:12px 15px;
       }
 
       .message{
@@ -355,15 +343,19 @@
 
   </script>
 
+  <!-- Main Container -->
+
   <div class="container">
 
-    <!-- Cute GIF -->
+    <!-- GIF -->
 
     <img
       class="gif"
       src="https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif"
       alt="Cute Cat"
     />
+
+    <!-- Heading -->
 
     <h1>
       What do you want for your birthday, Husband? ❤️
@@ -430,22 +422,22 @@
 
       // Grow green button
 
-      yesScale += 0.22;
+      yesScale += 0.15;
 
       yesBtn.style.transform =
-        `translateY(-50%) scale(${yesScale})`;
+        `scale(${yesScale})`;
 
       // Shrink red button
 
       if(clickCount < 5){
 
-        noScale -= 0.08;
+        noScale -= 0.05;
 
         noBtn.style.transform =
-          `translateY(-50%) scale(${Math.max(noScale, 0.75)})`;
+          `scale(${Math.max(noScale, 0.8)})`;
       }
 
-      // Change text
+      // Change button text
 
       if(clickCount < texts.length){
 
@@ -453,29 +445,27 @@
           texts[clickCount];
       }
 
-      // Floating random button
+      // Floating button after last chance
 
       if(clickCount >= 4){
+
+        // Switch to floating mode
+
+        noBtn.style.position = "fixed";
 
         if(floatCount < 3){
 
           const padding = 20;
 
-          const buttonWidth =
-            noBtn.offsetWidth;
-
-          const buttonHeight =
-            noBtn.offsetHeight;
-
           const maxX =
             window.innerWidth -
-            buttonWidth -
+            noBtn.offsetWidth -
             padding;
 
           const maxY =
             window.innerHeight -
-            buttonHeight -
-            140;
+            noBtn.offsetHeight -
+            120;
 
           const randomX =
             Math.random() *
@@ -484,8 +474,8 @@
 
           const randomY =
             Math.random() *
-            (maxY - 120) +
-            120;
+            (maxY - 100) +
+            100;
 
           noBtn.style.left =
             randomX + "px";
@@ -493,10 +483,8 @@
           noBtn.style.top =
             randomY + "px";
 
-          noBtn.style.right = "auto";
-
           noBtn.style.transform =
-            `scale(${Math.max(noScale, 0.75)})`;
+            `scale(${Math.max(noScale, 0.8)})`;
 
           floatCount++;
 
@@ -527,9 +515,9 @@
       // Grow green button
 
       yesBtn.style.transform =
-        "translateY(-50%) scale(1.45)";
+        "scale(1.35)";
 
-      // Change text
+      // Change button text
 
       yesBtn.innerHTML =
         "BEST HUSBAND ❤️";
