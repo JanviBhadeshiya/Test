@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  />
+
   <title>Birthday Question ❤️</title>
 
   <style>
@@ -10,61 +14,107 @@
       margin:0;
       padding:0;
       box-sizing:border-box;
+      -webkit-tap-highlight-color: transparent;
       font-family:'Comic Sans MS', cursive, sans-serif;
     }
 
+    html{
+      width:100%;
+      height:100%;
+    }
+
     body{
-      height:100vh;
-      overflow:hidden;
+      width:100%;
+      min-height:100vh;
+      overflow-x:hidden;
+      overflow-y:auto;
+
       background:#ffc0cb;
+
       display:flex;
       justify-content:center;
       align-items:center;
+
       position:relative;
+
+      padding:
+        env(safe-area-inset-top)
+        16px
+        env(safe-area-inset-bottom);
+
+      touch-action:manipulation;
     }
 
     /* Floating Hearts */
     .heart{
       position:absolute;
-      color:rgba(255,0,0,0.22);
+      color:rgba(255,0,0,0.18);
       user-select:none;
+      pointer-events:none;
+
       animation:float 8s linear infinite;
     }
 
     @keyframes float{
       from{
-        transform:translateY(100vh) rotate(0deg);
+        transform:translateY(110vh) rotate(0deg);
       }
+
       to{
-        transform:translateY(-120vh) rotate(360deg);
+        transform:translateY(-130vh) rotate(360deg);
       }
     }
 
     .container{
-      text-align:center;
-      z-index:10;
-      padding:20px;
       width:100%;
-      max-width:700px;
+      max-width:420px;
+
+      text-align:center;
+
+      z-index:10;
+
+      padding:24px 18px 40px;
+
+      background:rgba(255,255,255,0.12);
+
+      border-radius:28px;
+
+      backdrop-filter:blur(4px);
+
+      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+    }
+
+    .gif{
+      width:78%;
+      max-width:240px;
+
+      border-radius:22px;
+
+      margin-bottom:24px;
+
+      box-shadow:0 8px 22px rgba(0,0,0,0.18);
     }
 
     h1{
       color:#b30059;
-      font-size:2.2rem;
-      margin-bottom:20px;
-    }
 
-    .gif{
-      width:240px;
-      border-radius:20px;
-      margin-bottom:25px;
-      box-shadow:0 8px 20px rgba(0,0,0,0.15);
+      font-size:2rem;
+
+      line-height:1.4;
+
+      margin-bottom:28px;
+
+      padding:0 6px;
+
+      word-wrap:break-word;
     }
 
     .buttons{
       position:relative;
+
       width:100%;
-      height:320px;
+
+      height:300px;
 
       display:flex;
       justify-content:center;
@@ -73,48 +123,147 @@
 
     button{
       border:none;
-      border-radius:50px;
-      padding:15px 30px;
-      font-size:1.2rem;
-      color:white;
+
+      border-radius:999px;
+
+      padding:15px 28px;
+
+      font-size:1.1rem;
+
       font-weight:bold;
+
+      color:white;
+
       cursor:pointer;
-      transition:all 0.3s ease;
-      box-shadow:0 5px 15px rgba(0,0,0,0.2);
+
+      transition:all 0.25s ease;
+
+      box-shadow:0 6px 16px rgba(0,0,0,0.2);
+
+      min-width:130px;
+
+      max-width:85vw;
+
+      white-space:nowrap;
     }
 
     /* Green Button */
     #yesBtn{
       background:#28a745;
+
       position:relative;
+
       z-index:2;
+
       transform:scale(1);
     }
 
     /* Red Button */
     #noBtn{
       background:#ff3b3b;
+
       position:absolute;
+
       left:62%;
+
       top:50%;
+
       transform:translateY(-50%) scale(1);
+
       z-index:1;
     }
 
     .message{
-      margin-top:25px;
-      font-size:2rem;
+      margin-top:28px;
+
+      font-size:1.9rem;
+
+      line-height:1.5;
+
       color:#cc0066;
+
       display:none;
-      animation:pop 0.5s ease;
+
+      animation:pop 0.45s ease;
+
+      padding:0 10px;
     }
 
     @keyframes pop{
       0%{
         transform:scale(0.5);
+        opacity:0;
       }
+
       100%{
         transform:scale(1);
+        opacity:1;
+      }
+    }
+
+    /* iPhone 15 / iPhone 16 Optimization */
+    @media (max-width: 430px){
+
+      body{
+        align-items:flex-start;
+      }
+
+      .container{
+        margin-top:20px;
+        margin-bottom:20px;
+
+        padding:24px 16px 38px;
+
+        border-radius:24px;
+      }
+
+      h1{
+        font-size:1.65rem;
+        margin-bottom:24px;
+      }
+
+      .gif{
+        width:82%;
+        max-width:220px;
+      }
+
+      .buttons{
+        height:260px;
+      }
+
+      button{
+        font-size:1rem;
+        padding:14px 22px;
+        min-width:115px;
+      }
+
+      .message{
+        font-size:1.5rem;
+      }
+
+      #noBtn{
+        left:58%;
+      }
+    }
+
+    /* Small Phones */
+    @media (max-width: 360px){
+
+      h1{
+        font-size:1.45rem;
+      }
+
+      .message{
+        font-size:1.3rem;
+      }
+
+      button{
+        font-size:0.95rem;
+        padding:12px 18px;
+      }
+
+      .buttons{
+        height:240px;
       }
     }
 
@@ -125,36 +274,54 @@
 
   <!-- Floating Hearts -->
   <script>
+
     for(let i = 0; i < 35; i++){
 
       let heart = document.createElement("div");
 
       heart.className = "heart";
+
       heart.innerHTML = "❤";
 
       heart.style.left = Math.random() * 100 + "vw";
-      heart.style.fontSize = (20 + Math.random() * 40) + "px";
-      heart.style.animationDuration = (5 + Math.random() * 6) + "s";
-      heart.style.animationDelay = Math.random() * 5 + "s";
+
+      heart.style.fontSize =
+        (18 + Math.random() * 32) + "px";
+
+      heart.style.animationDuration =
+        (5 + Math.random() * 6) + "s";
+
+      heart.style.animationDelay =
+        Math.random() * 5 + "s";
 
       document.body.appendChild(heart);
     }
+
   </script>
 
   <div class="container">
 
-    <!-- Cute Cat GIF -->
+    <!-- GIF -->
     <img
       class="gif"
       src="https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif"
       alt="Cute Cat"
     />
 
-    <h1>What do you want for your birthday, Husband? ❤️</h1>
+    <h1>
+      What do you want for your birthday, Husband? ❤️
+    </h1>
 
     <div class="buttons">
-      <button id="yesBtn">PS4 🎮</button>
-      <button id="noBtn">Nothing</button>
+
+      <button id="yesBtn">
+        PS4 🎮
+      </button>
+
+      <button id="noBtn">
+        Nothing
+      </button>
+
     </div>
 
     <div class="message" id="message">
@@ -173,8 +340,8 @@
     const texts = [
       "Nothing",
       "Are you sure?",
-      "Pretty Please",
-      "It will make me happy",
+      "Pretty Please 🥺",
+      "It will make me happy ❤️",
       "Last chance 😊"
     ];
 
@@ -190,45 +357,77 @@
       clickCount++;
 
       // Grow green button
-      yesScale += 0.25;
-      yesBtn.style.transform = `scale(${yesScale})`;
+      yesScale += 0.22;
+
+      yesBtn.style.transform =
+        `scale(${yesScale})`;
 
       // Shrink red button
       if(clickCount < 5){
+
         noScale -= 0.12;
+
         noBtn.style.transform =
           `translateY(-50%) scale(${noScale})`;
       }
 
-      // Change button text
+      // Change text
       if(clickCount < texts.length){
-        noBtn.innerText = texts[clickCount];
+
+        noBtn.innerText =
+          texts[clickCount];
       }
 
-      // Floating random button after last chance
+      // Move button randomly
       if(clickCount >= 4){
 
         if(floatCount < 3){
 
+          const padding = 20;
+
+          const maxX =
+            window.innerWidth -
+            noBtn.offsetWidth -
+            padding;
+
+          const maxY =
+            window.innerHeight -
+            noBtn.offsetHeight -
+            padding;
+
           const randomX =
-            Math.random() * (window.innerWidth - 180);
+            Math.max(
+              padding,
+              Math.random() * maxX
+            );
 
           const randomY =
-            Math.random() * (window.innerHeight - 100);
+            Math.max(
+              120,
+              Math.random() * maxY
+            );
 
-          noBtn.style.left = randomX + "px";
-          noBtn.style.top = randomY + "px";
+          noBtn.style.left =
+            randomX + "px";
+
+          noBtn.style.top =
+            randomY + "px";
+
+          noBtn.style.transform =
+            `scale(${noScale})`;
 
           floatCount++;
 
         } else {
 
-          // Auto click green button
+          // Hide red button forever
           noBtn.style.display = "none";
 
           setTimeout(() => {
+
             yesBtn.click();
-          }, 800);
+
+          }, 700);
         }
       }
 
@@ -237,18 +436,20 @@
     // GREEN BUTTON CLICK
     yesBtn.addEventListener("click", () => {
 
-      // Hide red button forever
+      // Remove red button
       noBtn.style.display = "none";
 
-      // Make green button bigger
-      yesBtn.style.transform = "scale(1.5)";
+      // Grow green button
+      yesBtn.style.transform =
+        "scale(1.45)";
 
-      // Change button text
-      yesBtn.innerHTML = "BEST HUSBAND ❤️";
+      // Change text
+      yesBtn.innerHTML =
+        "BEST HUSBAND ❤️";
 
-      // Show cute message
-      message.style.display = "block";
-
+      // Show message
+      message.style.display =
+        "block";
     });
 
   </script>
