@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+
   <meta
     name="viewport"
     content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
@@ -10,22 +11,26 @@
   <title>Birthday Question ❤️</title>
 
   <style>
+
     *{
       margin:0;
       padding:0;
       box-sizing:border-box;
       -webkit-tap-highlight-color: transparent;
+
       font-family:'Comic Sans MS', cursive, sans-serif;
     }
 
-    html{
+    html,
+    body{
       width:100%;
-      height:100%;
+      min-height:100%;
     }
 
     body{
-      width:100%;
+
       min-height:100vh;
+
       overflow-x:hidden;
       overflow-y:auto;
 
@@ -46,9 +51,12 @@
     }
 
     /* Floating Hearts */
+
     .heart{
       position:absolute;
+
       color:rgba(255,0,0,0.18);
+
       user-select:none;
       pointer-events:none;
 
@@ -56,6 +64,7 @@
     }
 
     @keyframes float{
+
       from{
         transform:translateY(110vh) rotate(0deg);
       }
@@ -65,7 +74,10 @@
       }
     }
 
+    /* Main Card */
+
     .container{
+
       width:100%;
       max-width:420px;
 
@@ -75,7 +87,7 @@
 
       padding:24px 18px 40px;
 
-      background:rgba(255,255,255,0.12);
+      background:rgba(255,255,255,0.14);
 
       border-radius:28px;
 
@@ -84,8 +96,11 @@
       box-shadow:0 10px 30px rgba(0,0,0,0.12);
     }
 
+    /* GIF */
+
     .gif{
-      width:78%;
+
+      width:80%;
       max-width:240px;
 
       border-radius:22px;
@@ -95,7 +110,10 @@
       box-shadow:0 8px 22px rgba(0,0,0,0.18);
     }
 
+    /* Heading */
+
     h1{
+
       color:#b30059;
 
       font-size:2rem;
@@ -109,26 +127,32 @@
       word-wrap:break-word;
     }
 
+    /* Buttons Area */
+
     .buttons{
+
       position:relative;
 
       width:100%;
 
-      height:300px;
+      height:320px;
 
       display:flex;
       justify-content:center;
       align-items:center;
+
+      padding-top:10px;
     }
 
     button{
+
       border:none;
 
       border-radius:999px;
 
-      padding:15px 28px;
+      padding:15px 24px;
 
-      font-size:1.1rem;
+      font-size:1rem;
 
       font-weight:bold;
 
@@ -142,29 +166,39 @@
 
       min-width:130px;
 
-      max-width:85vw;
+      max-width:75vw;
 
       white-space:nowrap;
+
+      text-align:center;
     }
 
     /* Green Button */
+
     #yesBtn{
+
       background:#28a745;
 
-      position:relative;
+      position:absolute;
+
+      left:18%;
+
+      top:50%;
+
+      transform:translateY(-50%) scale(1);
 
       z-index:2;
-
-      transform:scale(1);
     }
 
     /* Red Button */
+
     #noBtn{
+
       background:#ff3b3b;
 
       position:absolute;
 
-      left:62%;
+      right:18%;
 
       top:50%;
 
@@ -173,10 +207,13 @@
       z-index:1;
     }
 
+    /* Message */
+
     .message{
+
       margin-top:28px;
 
-      font-size:1.9rem;
+      font-size:1.8rem;
 
       line-height:1.5;
 
@@ -190,6 +227,7 @@
     }
 
     @keyframes pop{
+
       0%{
         transform:scale(0.5);
         opacity:0;
@@ -201,14 +239,16 @@
       }
     }
 
-    /* iPhone 15 / iPhone 16 Optimization */
-    @media (max-width: 430px){
+    /* iPhone 15 / 16 Optimization */
+
+    @media (max-width:430px){
 
       body{
         align-items:flex-start;
       }
 
       .container{
+
         margin-top:20px;
         margin-bottom:20px;
 
@@ -218,52 +258,66 @@
       }
 
       h1{
+
         font-size:1.65rem;
+
         margin-bottom:24px;
       }
 
       .gif{
+
         width:82%;
+
         max-width:220px;
       }
 
       .buttons{
-        height:260px;
+
+        height:280px;
       }
 
       button{
-        font-size:1rem;
-        padding:14px 22px;
+
+        font-size:0.95rem;
+
+        padding:14px 18px;
+
         min-width:115px;
+
+        max-width:70vw;
       }
 
-      .message{
-        font-size:1.5rem;
+      #yesBtn{
+        left:6%;
       }
 
       #noBtn{
-        left:58%;
+        right:6%;
+      }
+
+      .message{
+
+        font-size:1.45rem;
       }
     }
 
-    /* Small Phones */
-    @media (max-width: 360px){
+    /* Extra Small Phones */
+
+    @media (max-width:360px){
 
       h1{
         font-size:1.45rem;
       }
 
-      .message{
-        font-size:1.3rem;
-      }
-
       button{
-        font-size:0.95rem;
-        padding:12px 18px;
+
+        font-size:0.9rem;
+
+        padding:12px 16px;
       }
 
-      .buttons{
-        height:240px;
+      .message{
+        font-size:1.25rem;
       }
     }
 
@@ -273,6 +327,7 @@
 <body>
 
   <!-- Floating Hearts -->
+
   <script>
 
     for(let i = 0; i < 35; i++){
@@ -283,7 +338,8 @@
 
       heart.innerHTML = "❤";
 
-      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.left =
+        Math.random() * 100 + "vw";
 
       heart.style.fontSize =
         (18 + Math.random() * 32) + "px";
@@ -301,7 +357,8 @@
 
   <div class="container">
 
-    <!-- GIF -->
+    <!-- Cute GIF -->
+
     <img
       class="gif"
       src="https://media.giphy.com/media/v6aOjy0Qo1fIA/giphy.gif"
@@ -311,6 +368,8 @@
     <h1>
       What do you want for your birthday, Husband? ❤️
     </h1>
+
+    <!-- Buttons -->
 
     <div class="buttons">
 
@@ -324,20 +383,30 @@
 
     </div>
 
+    <!-- Final Message -->
+
     <div class="message" id="message">
+
       YAYYYY!! 🎉❤️<br>
       PS4 IT IS 😍
+
     </div>
 
   </div>
 
   <script>
 
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const message = document.getElementById("message");
+    const yesBtn =
+      document.getElementById("yesBtn");
+
+    const noBtn =
+      document.getElementById("noBtn");
+
+    const message =
+      document.getElementById("message");
 
     const texts = [
+
       "Nothing",
       "Are you sure?",
       "Pretty Please 🥺",
@@ -346,66 +415,77 @@
     ];
 
     let clickCount = 0;
+
     let floatCount = 0;
 
     let yesScale = 1;
+
     let noScale = 1;
 
     // RED BUTTON CLICK
+
     noBtn.addEventListener("click", () => {
 
       clickCount++;
 
       // Grow green button
+
       yesScale += 0.22;
 
       yesBtn.style.transform =
-        `scale(${yesScale})`;
+        `translateY(-50%) scale(${yesScale})`;
 
       // Shrink red button
+
       if(clickCount < 5){
 
-        noScale -= 0.12;
+        noScale -= 0.08;
 
         noBtn.style.transform =
-          `translateY(-50%) scale(${noScale})`;
+          `translateY(-50%) scale(${Math.max(noScale, 0.75)})`;
       }
 
       // Change text
+
       if(clickCount < texts.length){
 
         noBtn.innerText =
           texts[clickCount];
       }
 
-      // Move button randomly
+      // Floating random button
+
       if(clickCount >= 4){
 
         if(floatCount < 3){
 
           const padding = 20;
 
+          const buttonWidth =
+            noBtn.offsetWidth;
+
+          const buttonHeight =
+            noBtn.offsetHeight;
+
           const maxX =
             window.innerWidth -
-            noBtn.offsetWidth -
+            buttonWidth -
             padding;
 
           const maxY =
             window.innerHeight -
-            noBtn.offsetHeight -
-            padding;
+            buttonHeight -
+            140;
 
           const randomX =
-            Math.max(
-              padding,
-              Math.random() * maxX
-            );
+            Math.random() *
+            (maxX - padding) +
+            padding;
 
           const randomY =
-            Math.max(
-              120,
-              Math.random() * maxY
-            );
+            Math.random() *
+            (maxY - 120) +
+            120;
 
           noBtn.style.left =
             randomX + "px";
@@ -413,14 +493,17 @@
           noBtn.style.top =
             randomY + "px";
 
+          noBtn.style.right = "auto";
+
           noBtn.style.transform =
-            `scale(${noScale})`;
+            `scale(${Math.max(noScale, 0.75)})`;
 
           floatCount++;
 
         } else {
 
           // Hide red button forever
+
           noBtn.style.display = "none";
 
           setTimeout(() => {
@@ -434,20 +517,25 @@
     });
 
     // GREEN BUTTON CLICK
+
     yesBtn.addEventListener("click", () => {
 
       // Remove red button
+
       noBtn.style.display = "none";
 
       // Grow green button
+
       yesBtn.style.transform =
-        "scale(1.45)";
+        "translateY(-50%) scale(1.45)";
 
       // Change text
+
       yesBtn.innerHTML =
         "BEST HUSBAND ❤️";
 
       // Show message
+
       message.style.display =
         "block";
     });
