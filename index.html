@@ -18,21 +18,17 @@
       box-sizing:border-box;
       -webkit-tap-highlight-color: transparent;
 
-      font-family:'Comic Sans MS', cursive, sans-serif;
+      font-family:"Comic Sans MS", "Comic Sans", cursive;
     }
 
     html,
     body{
       width:100%;
-      min-height:100%;
+      height:100%;
+      overflow:hidden;
     }
 
     body{
-
-      min-height:100vh;
-
-      overflow-x:hidden;
-      overflow-y:auto;
 
       background:#ffc0cb;
 
@@ -42,10 +38,7 @@
 
       position:relative;
 
-      padding:
-        env(safe-area-inset-top)
-        16px
-        env(safe-area-inset-bottom);
+      padding:12px;
 
       touch-action:manipulation;
     }
@@ -55,7 +48,7 @@
     .heart{
       position:absolute;
 
-      color:rgba(255,0,0,0.18);
+      color:rgba(255,0,0,0.16);
 
       user-select:none;
       pointer-events:none;
@@ -79,35 +72,43 @@
     .container{
 
       width:100%;
-      max-width:420px;
+      max-width:390px;
 
-      text-align:center;
+      height:96vh;
 
-      z-index:10;
-
-      padding:24px 18px 40px;
-
-      background:rgba(255,255,255,0.14);
+      background:rgba(255,255,255,0.15);
 
       border-radius:28px;
 
+      padding:22px 18px;
+
+      text-align:center;
+
+      position:relative;
+
+      overflow:hidden;
+
+      box-shadow:0 10px 28px rgba(0,0,0,0.12);
+
       backdrop-filter:blur(4px);
 
-      box-shadow:0 10px 30px rgba(0,0,0,0.12);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
     }
 
     /* GIF */
 
     .gif{
 
-      width:80%;
+      width:78%;
       max-width:240px;
 
-      border-radius:22px;
+      border-radius:24px;
 
       margin-bottom:24px;
 
-      box-shadow:0 8px 22px rgba(0,0,0,0.18);
+      box-shadow:0 8px 20px rgba(0,0,0,0.18);
     }
 
     /* Heading */
@@ -118,13 +119,11 @@
 
       font-size:2rem;
 
-      line-height:1.4;
+      line-height:1.35;
 
-      margin-bottom:28px;
+      margin-bottom:40px;
 
-      padding:0 6px;
-
-      word-wrap:break-word;
+      padding:0 8px;
     }
 
     /* Buttons Area */
@@ -135,19 +134,14 @@
 
       width:100%;
 
-      min-height:220px;
+      min-height:180px;
 
       display:flex;
-
-      justify-content:center;
-
+      flex-direction:column;
       align-items:center;
+      justify-content:flex-start;
 
       gap:16px;
-
-      flex-wrap:wrap;
-
-      margin-top:10px;
     }
 
     button{
@@ -156,9 +150,9 @@
 
       border-radius:999px;
 
-      padding:15px 24px;
+      padding:16px 26px;
 
-      font-size:1rem;
+      font-size:1.05rem;
 
       font-weight:bold;
 
@@ -170,24 +164,22 @@
 
       box-shadow:0 6px 16px rgba(0,0,0,0.2);
 
-      min-width:120px;
-
-      white-space:nowrap;
+      min-width:180px;
 
       text-align:center;
+
+      font-family:"Comic Sans MS", "Comic Sans", cursive;
     }
 
     /* Green Button */
 
     #yesBtn{
 
-      background:#28a745;
-
-      position:relative;
-
-      z-index:2;
+      background:#24b343;
 
       transform:scale(1);
+
+      z-index:2;
     }
 
     /* Red Button */
@@ -196,30 +188,28 @@
 
       background:#ff3b3b;
 
-      position:relative;
+      transform:scale(1);
 
       z-index:1;
-
-      transform:scale(1);
     }
 
-    /* Message */
+    /* Final Message */
 
     .message{
 
-      margin-top:28px;
+      margin-top:auto;
+
+      margin-bottom:10px;
 
       font-size:1.8rem;
 
-      line-height:1.5;
+      line-height:1.45;
 
       color:#cc0066;
 
       display:none;
 
-      animation:pop 0.45s ease;
-
-      padding:0 10px;
+      animation:pop 0.4s ease;
     }
 
     @keyframes pop{
@@ -235,61 +225,48 @@
       }
     }
 
-    /* iPhone 15 / iPhone 16 Optimization */
+    /* iPhone 15 / 16 */
 
     @media (max-width:430px){
 
-      body{
-        align-items:flex-start;
-      }
-
       .container{
 
-        margin-top:20px;
-        margin-bottom:20px;
+        max-width:100%;
 
-        padding:24px 16px 38px;
+        height:95vh;
 
-        border-radius:24px;
+        padding:20px 16px;
+      }
+
+      .gif{
+
+        width:82%;
+        max-width:220px;
       }
 
       h1{
 
         font-size:1.65rem;
 
-        margin-bottom:24px;
-      }
-
-      .gif{
-
-        width:82%;
-
-        max-width:220px;
-      }
-
-      .buttons{
-
-        gap:12px;
-
-        min-height:200px;
+        margin-bottom:34px;
       }
 
       button{
 
-        font-size:0.92rem;
+        min-width:170px;
 
-        padding:13px 18px;
+        font-size:0.98rem;
 
-        min-width:105px;
+        padding:14px 22px;
       }
 
       .message{
 
-        font-size:1.45rem;
+        font-size:1.55rem;
       }
     }
 
-    /* Extra Small Phones */
+    /* Small Devices */
 
     @media (max-width:360px){
 
@@ -299,13 +276,13 @@
 
       button{
 
-        font-size:0.88rem;
+        min-width:160px;
 
-        padding:12px 15px;
+        font-size:0.9rem;
       }
 
       .message{
-        font-size:1.25rem;
+        font-size:1.3rem;
       }
     }
 
@@ -330,7 +307,7 @@
         Math.random() * 100 + "vw";
 
       heart.style.fontSize =
-        (18 + Math.random() * 32) + "px";
+        (18 + Math.random() * 30) + "px";
 
       heart.style.animationDuration =
         (5 + Math.random() * 6) + "s";
@@ -377,7 +354,10 @@
 
     <!-- Final Message -->
 
-    <div class="message" id="message">
+    <div
+      class="message"
+      id="message"
+    >
 
       YAYYYY!! 🎉❤️<br>
       PS4 IT IS 😍
@@ -396,6 +376,9 @@
 
     const message =
       document.getElementById("message");
+
+    const buttons =
+      document.querySelector(".buttons");
 
     const texts = [
 
@@ -422,22 +405,22 @@
 
       // Grow green button
 
-      yesScale += 0.15;
+      yesScale += 0.12;
 
       yesBtn.style.transform =
         `scale(${yesScale})`;
 
-      // Shrink red button
+      // Shrink red button slightly
 
       if(clickCount < 5){
 
-        noScale -= 0.05;
+        noScale -= 0.03;
 
         noBtn.style.transform =
-          `scale(${Math.max(noScale, 0.8)})`;
+          `scale(${Math.max(noScale, 0.88)})`;
       }
 
-      // Change button text
+      // Change text
 
       if(clickCount < texts.length){
 
@@ -445,15 +428,13 @@
           texts[clickCount];
       }
 
-      // Floating button after last chance
+      // Floating mode after last chance
 
       if(clickCount >= 4){
 
-        // Switch to floating mode
-
-        noBtn.style.position = "fixed";
-
         if(floatCount < 3){
+
+          noBtn.style.position = "fixed";
 
           const padding = 20;
 
@@ -474,8 +455,8 @@
 
           const randomY =
             Math.random() *
-            (maxY - 100) +
-            100;
+            (maxY - 120) +
+            120;
 
           noBtn.style.left =
             randomX + "px";
@@ -483,16 +464,21 @@
           noBtn.style.top =
             randomY + "px";
 
-          noBtn.style.transform =
-            `scale(${Math.max(noScale, 0.8)})`;
-
           floatCount++;
 
         } else {
 
-          // Hide red button forever
+          // Hide red button
 
           noBtn.style.display = "none";
+
+          // Center green button properly
+
+          buttons.style.justifyContent =
+            "center";
+
+          yesBtn.style.transform =
+            "scale(1.35)";
 
           setTimeout(() => {
 
@@ -511,6 +497,11 @@
       // Remove red button
 
       noBtn.style.display = "none";
+
+      // Center button
+
+      buttons.style.justifyContent =
+        "center";
 
       // Grow green button
 
